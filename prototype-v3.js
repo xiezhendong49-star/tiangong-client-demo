@@ -594,8 +594,8 @@ function materialSourceMenu() {
   return `<div class="v3-source-menu">
     <button onclick="openMaterialSource('tiangong')">天工云仓物料库</button>
     <button onclick="openMaterialSource('zhaocai')">兆材云库</button>
-    <button onclick="openMaterialSource('local')">本地上传</button>
     <button onclick="openMaterialSource('rfid')">RFID识别</button>
+    <button onclick="openMaterialSource('local')">本地上传</button>
   </div>`;
 }
 
