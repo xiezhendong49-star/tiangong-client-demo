@@ -722,7 +722,7 @@ function markerScreen() {
     const markIndex = S.marks.findIndex(mark => mark.materialId === material.id);
     const bound = markIndex >= 0;
     return `<button class="v3-marker-material ${activeId === material.id ? 'on' : ''} ${bound ? 'bound' : ''}" onclick="selectMarkerMaterial('${material.id}')">
-      <img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}"><span>${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}<small>${material.source}</small></span>${bound ? `<em>标点 ${markIndex + 1}</em>` : ''}
+      <img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}"><span>${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}<small>${material.source}</small></span>
     </button>`;
   }).join('');
   const points = S.marks.map((mark, index) => `<button class="v3-point ${S.active === index ? 'on' : ''}" data-v3-mark="${index}" style="left:${mark.x}%;top:${mark.y}%" aria-label="标点 ${index + 1}" onpointerdown="dragV3Mark(event,${index})" onclick="selectV3Mark(event,${index})">${index + 1}</button>`).join('');
@@ -1518,7 +1518,7 @@ function markerScreen() {
       <span class="v3-marker-thumb"><img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}">${bound ? `<span class="v3-marker-thumb-point ${S.active === markIndex ? 'on' : ''}" aria-hidden="true">${markIndex + 1}</span>` : ''}</span>
       <span class="v3-marker-material-copy">${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}${material.category ? `<span>${v3Esc(material.category)}</span>` : ''}<small>${v3Esc(material.source)}</small></span>
       <span class="v3-marker-material-actions">${bound
-        ? `<em>标点 ${markIndex + 1}</em><button onclick="deleteMarkForMaterial(event,'${material.id}')">删除标点</button>`
+        ? `<button onclick="deleteMarkForMaterial(event,'${material.id}')">删除标点</button>`
         : `<button class="remove" onclick="removeCandidateMaterialFromMarker(event,'${material.id}')">移除</button>`}</span>
     </article>`;
   }).join('') : `<div class="v3-marker-empty">
