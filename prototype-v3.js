@@ -20,7 +20,14 @@ const V3_FLOORS = [
 
 const V3_STYLES = [
   { name: '现代暖奢', image: V3_USER_ASSETS.style },
-  ...DEMO_STYLE_ITEMS.slice(1, 12).map(([name, image]) => ({ name, image })),
+  ...DEMO_STYLE_ITEMS.slice(1, 12).map(([name, image]) => ({
+    name,
+    image: name === '新中式'
+      ? 'prototype_assets/room-alt.jpg'
+      : name === '日式原木'
+        ? 'prototype_assets/effect-after-bedroom.png'
+        : image,
+  })),
 ];
 
 V3_USER_ASSETS.materials.forEach((image, index) => {
