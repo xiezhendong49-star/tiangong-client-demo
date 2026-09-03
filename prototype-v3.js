@@ -62,9 +62,9 @@ const V3_CATALOG_CATEGORIES = {
 };
 
 const V3_EFFECT_HISTORY_SEED = [
-  { id: 'history-3', name: '花香壹号 · 现代简约', image: V3_STYLE_SCENE_IMAGES[3], time: '2026-08-31 16:42', operator: '高志远' },
-  { id: 'history-2', name: '滨江四居 · 原木风', image: V3_STYLE_SCENE_IMAGES[1], time: '2026-08-31 14:18', operator: '陈晓' },
-  { id: 'history-1', name: '澜庭四居 · 奶油风', image: V3_STYLE_SCENE_IMAGES[4], time: '2026-08-30 11:06', operator: '高志远' },
+  { id: 'history-3', name: '花香壹号 · 现代简约', image: V3_STYLE_SCENE_IMAGES[3], time: '2026-08-31 16:42', operator: '演示管理员' },
+  { id: 'history-2', name: '滨江四居 · 原木风', image: V3_STYLE_SCENE_IMAGES[1], time: '2026-08-31 14:18', operator: '演示设计师' },
+  { id: 'history-1', name: '澜庭四居 · 奶油风', image: V3_STYLE_SCENE_IMAGES[4], time: '2026-08-30 11:06', operator: '演示管理员' },
 ];
 const V3_EFFECT_HISTORY_IMAGE_UPGRADE = Object.fromEntries(V3_EFFECT_HISTORY_SEED.map(item => [item.id, item.image]));
 const V3_HISTORY_STORAGE_KEY = 'tiangong-v3-effect-history';
@@ -86,28 +86,28 @@ function v3PersistEffectHistory() {
 }
 
 const V3_ADMIN_ITEMS = {
-  floor: V3_FLOORS.slice(0, 6).map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: '高志远', updatedAt: `2026-08-${30 - index} 10:2${index}` })),
-  effect: V3_EFFECT_PRESETS.map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: index % 2 ? '陈晓' : '高志远', updatedAt: `2026-08-${29 - index} 15:1${index}` })),
-  style: V3_STYLES.slice(0, 8).map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: '高志远', updatedAt: `2026-08-${28 - index} 09:3${index}` })),
+  floor: V3_FLOORS.slice(0, 6).map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: '演示管理员', updatedAt: `2026-08-${30 - index} 10:2${index}` })),
+  effect: V3_EFFECT_PRESETS.map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: index % 2 ? '演示设计师' : '演示管理员', updatedAt: `2026-08-${29 - index} 15:1${index}` })),
+  style: V3_STYLES.slice(0, 8).map((item, index) => ({ ...item, sort: index + 1, status: '启用', operator: '演示管理员', updatedAt: `2026-08-${28 - index} 09:3${index}` })),
 };
 
 const V3_INSTITUTIONS = [
-  { id: 'JG138196', name: '空间改造设计机构', admin: '刘晨', quota: 120, used: 37, startAt: '2026-09-01T00:00', endAt: '2027-08-31T23:59' },
-  { id: 'JG633483', name: '成都近相室内设计有限公司', admin: '李彬', quota: 80, used: 62, startAt: '2026-08-01T00:00', endAt: '2027-07-31T23:59' },
-  { id: 'JG714865', name: 'MCC利宾国际', admin: '机构管理员', quota: 200, used: 94, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59' },
-  { id: 'JG615047', name: '贝泰室内设计有限公司', admin: '机构管理员', quota: 60, used: 18, startAt: '2026-09-01T00:00', endAt: '2027-08-31T23:59' },
+  { id: 'JG-DEMO-01', name: '示例设计机构一', admin: '演示管理员', quota: 120, used: 37, startAt: '2026-09-01T00:00', endAt: '2027-08-31T23:59' },
+  { id: 'JG-DEMO-02', name: '示例设计机构二', admin: '演示用户A', quota: 80, used: 62, startAt: '2026-08-01T00:00', endAt: '2027-07-31T23:59' },
+  { id: 'JG-DEMO-03', name: '示例设计机构三', admin: '演示用户B', quota: 200, used: 94, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59' },
+  { id: 'JG-DEMO-04', name: '示例设计机构四', admin: '演示用户C', quota: 60, used: 18, startAt: '2026-09-01T00:00', endAt: '2027-08-31T23:59' },
 ];
 
 const V3_ZHAO_ORGS = [
-  { id: 'PP138196', name: '空间改造/刘晨', admin: '刘晨', account: '18680340653', location: '广东省/深圳市', scale: '0-20人', created: '2026-08-20 14:24:11', lastLogin: '2026-08-20 14:04:12', members: 1, tag: '', payment: '试用客户', quota: 120, used: 37, startAt: '2026-08-19T00:00', endAt: '2035-08-01T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'YF633483', name: '成都近相室内设计有限公司', admin: '李彬', account: '19949403933', location: '四川省/成都市', scale: '0-20人', created: '2026-08-07 16:04:06', lastLogin: '2026-08-07 16:24:45', members: 1, tag: '北京物料房沙龙', payment: '试用客户', quota: 80, used: 62, startAt: '2026-08-01T00:00', endAt: '2027-07-31T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'EP714865', name: 'MCC利宾国际', admin: '机构管理员', account: '13268351441', location: '广东省/深圳市', scale: '100-499人', created: '2026-07-31 11:56:28', lastLogin: '2026-07-31 15:39:59', members: 1, tag: 'Connie介绍', payment: '试用客户', quota: 200, used: 94, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'DJ615047', name: '贝泰室内设计(重庆)有限公司', admin: '机构管理员', account: '13452918674', location: '重庆市/市辖区', scale: '20-99人', created: '2026-07-23 16:58:41', lastLogin: '2026-07-24 14:47:58', members: 1, tag: '', payment: '试用客户', quota: 60, used: 18, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'CR778821', name: '云南布之空间设计有限公司', admin: '张越童', account: '15331750331', location: '云南省/昆明市', scale: '20-99人', created: '2026-07-17 15:58:23', lastLogin: '2026-08-14 13:50:32', members: 1, tag: '北京物料房沙龙', payment: '试用客户', quota: 100, used: 26, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'KN916676', name: '深圳市宁和建筑装饰有限公司', admin: '徐生', account: '13074955421', location: '广东省/深圳市', scale: '0-20人', created: '2026-07-17 11:31:51', lastLogin: '2026-07-21 14:42:22', members: 1, tag: 'Connie介绍', payment: '试用客户', quota: 100, used: 13, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'HW675169', name: '广东燕麦家居有限公司', admin: '曾立府', account: '13875970888', location: '广东省/佛山市', scale: '20-99人', created: '2026-07-16 15:55:23', lastLogin: '2026-08-04 16:09:43', members: 1, tag: '北京物料房沙龙', payment: '试用客户', quota: 120, used: 31, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'TS847205', name: '秦斯汀智能家居有限公司', admin: '付文翔', account: '13699109131', location: '河北省/衡水市', scale: '100-499人', created: '2026-07-15 15:29:19', lastLogin: '2026-08-17 17:43:40', members: 1, tag: '2026年618活动', payment: '试用客户', quota: 160, used: 47, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
-  { id: 'XQ248239', name: '烟台三平二设计有限公司', admin: '夏文杰', account: '18562162101', location: '山东省/烟台市', scale: '0-20人', created: '2026-07-15 15:27:40', lastLogin: '2026-07-17 09:28:27', members: 1, tag: '2026年618活动', payment: '试用客户', quota: 80, used: 22, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-01', name: '示例空间设计一组', admin: '演示用户A', account: 'demo001', location: '广东省/深圳市', scale: '0-20人', created: '2026-08-20 14:24:11', lastLogin: '2026-08-20 14:04:12', members: 1, tag: '', payment: '试用客户', quota: 120, used: 37, startAt: '2026-08-19T00:00', endAt: '2035-08-01T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-02', name: '示例空间设计二组', admin: '演示用户B', account: 'demo002', location: '四川省/成都市', scale: '0-20人', created: '2026-08-07 16:04:06', lastLogin: '2026-08-07 16:24:45', members: 1, tag: '线下活动', payment: '试用客户', quota: 80, used: 62, startAt: '2026-08-01T00:00', endAt: '2027-07-31T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-03', name: '示例空间设计三组', admin: '演示用户C', account: 'demo003', location: '广东省/深圳市', scale: '100-499人', created: '2026-07-31 11:56:28', lastLogin: '2026-07-31 15:39:59', members: 1, tag: '合作介绍', payment: '试用客户', quota: 200, used: 94, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-04', name: '示例空间设计四组', admin: '演示用户D', account: 'demo004', location: '重庆市/市辖区', scale: '20-99人', created: '2026-07-23 16:58:41', lastLogin: '2026-07-24 14:47:58', members: 1, tag: '', payment: '试用客户', quota: 60, used: 18, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-05', name: '示例空间设计五组', admin: '演示用户E', account: 'demo005', location: '云南省/昆明市', scale: '20-99人', created: '2026-07-17 15:58:23', lastLogin: '2026-08-14 13:50:32', members: 1, tag: '线下活动', payment: '试用客户', quota: 100, used: 26, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-06', name: '示例空间设计六组', admin: '演示用户F', account: 'demo006', location: '广东省/深圳市', scale: '0-20人', created: '2026-07-17 11:31:51', lastLogin: '2026-07-21 14:42:22', members: 1, tag: '合作介绍', payment: '试用客户', quota: 100, used: 13, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-07', name: '示例空间设计七组', admin: '演示用户G', account: 'demo007', location: '广东省/佛山市', scale: '20-99人', created: '2026-07-16 15:55:23', lastLogin: '2026-08-04 16:09:43', members: 1, tag: '线下活动', payment: '试用客户', quota: 120, used: 31, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-08', name: '示例空间设计八组', admin: '演示用户H', account: 'demo008', location: '河北省/衡水市', scale: '100-499人', created: '2026-07-15 15:29:19', lastLogin: '2026-08-17 17:43:40', members: 1, tag: '推广活动', payment: '试用客户', quota: 160, used: 47, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
+  { id: 'ORG-DEMO-09', name: '示例空间设计九组', admin: '演示用户I', account: 'demo009', location: '山东省/烟台市', scale: '0-20人', created: '2026-07-15 15:27:40', lastLogin: '2026-07-17 09:28:27', members: 1, tag: '推广活动', payment: '试用客户', quota: 80, used: 22, startAt: '2026-07-01T00:00', endAt: '2027-06-30T23:59', version: '专业版', memberLimit: 10, coins: 0 },
 ];
 
 function v3SeedAiRights(org, index) {
@@ -118,7 +118,7 @@ function v3SeedAiRights(org, index) {
     used: Number(org.used) || 0,
     startAt: org.startAt,
     endAt: org.endAt,
-    operator: '高志远',
+    operator: '演示管理员',
     createdAt: '2026-09-01 09:00',
   }];
 }
@@ -161,7 +161,7 @@ function v3ConsumeAiRight(org) {
 
 const V3_CALL_LOGS = [
   {
-    id: 'AI202609010012', institution: '空间改造设计机构', operator: '高志远', type: '生成效果图',
+    id: 'AI202609010012', institution: '示例设计机构一', operator: '演示管理员', type: '生成效果图',
     time: '2026-09-01 09:41', status: '成功', counted: true,
     mainImage: 'prototype_assets/floorplan-98.png', mainLabel: '花香壹号 98㎡',
     resultImage: 'prototype_assets/room-original.jpg', resultLabel: '最终效果图',
@@ -173,7 +173,7 @@ const V3_CALL_LOGS = [
     ],
   },
   {
-    id: 'AI202609010011', institution: '空间改造设计机构', operator: '陈晓', type: '材质替换',
+    id: 'AI202609010011', institution: '示例设计机构一', operator: '演示设计师', type: '材质替换',
     time: '2026-09-01 09:26', status: '成功', counted: true,
     mainImage: 'prototype_assets/room-alt.jpg', mainLabel: '原木餐厅',
     resultImage: 'prototype_assets/room-replaced.jpg', resultLabel: '最终替换效果图',
@@ -187,7 +187,7 @@ const V3_CALL_LOGS = [
     ],
   },
   {
-    id: 'AI202608310086', institution: '成都近相室内设计有限公司', operator: '李彬', type: '生成效果图',
+    id: 'AI202608310086', institution: '示例设计机构二', operator: '演示用户A', type: '生成效果图',
     time: '2026-08-31 17:52', status: '失败', counted: false,
     mainImage: 'prototype_assets/floorplan-135.png', mainLabel: '滨江四居 135㎡',
     floorBox: { x: 52, y: 12, w: 35, h: 37 },
@@ -458,12 +458,12 @@ function finishBaseGeneration() {
   const time = v3Now();
   S.baseResult = V3_USER_ASSETS.effectBefore;
   const historyName = [S.floorName, S.styleName].filter(Boolean).join(' · ') || '生成效果图';
-  const history = { id: `history-${Date.now()}`, name: historyName, image: S.baseResult, time, operator: '高志远' };
+  const history = { id: `history-${Date.now()}`, name: historyName, image: S.baseResult, time, operator: '演示管理员' };
   V3_EFFECT_HISTORY.unshift(history);
   v3PersistEffectHistory();
   V3_CALL_LOGS.unshift({
     id: `AI${Date.now()}`,
-    institution: '空间改造设计机构', operator: '高志远', type: '生成效果图', time, status: '成功', counted: true,
+    institution: '示例设计机构一', operator: '演示管理员', type: '生成效果图', time, status: '成功', counted: true,
     mainImage: S.floorImage, mainLabel: S.floorName, floorBox: { ...S.floorBox },
     resultImage: S.baseResult, resultLabel: '最终效果图',
     inputs: [
@@ -818,12 +818,25 @@ function replaceMaterial() {
   S.loadingTimer = setTimeout(finishV3Replacement, 1100);
 }
 
+function v3SameImageAsset(left, right) {
+  const normalize = value => String(value || '').split('#')[0].split('?')[0].replace(/\\/g, '/');
+  const leftPath = normalize(left);
+  const rightPath = normalize(right);
+  return leftPath === rightPath || leftPath.endsWith(`/${rightPath}`) || rightPath.endsWith(`/${leftPath}`);
+}
+
+function v3ResolveReplacementResult(inputImage) {
+  return v3SameImageAsset(inputImage, V3_USER_ASSETS.effectAfter)
+    ? V3_USER_ASSETS.effectBefore
+    : V3_USER_ASSETS.effectAfter;
+}
+
 function finishV3Replacement() {
   const used = S.marks.map(mark => S.materialCandidates.find(material => material.id === mark.materialId)).filter(Boolean);
   const time = v3Now();
-  S.replacementResult = V3_USER_ASSETS.effectAfter;
+  S.replacementResult = v3ResolveReplacementResult(S.inputImage);
   const historyName = `${S.inputName || '效果图'} · 材质替换`;
-  V3_EFFECT_HISTORY.unshift({ id: `replacement-${Date.now()}`, name: historyName, image: S.replacementResult, time, operator: '高志远', type: '材质替换' });
+  V3_EFFECT_HISTORY.unshift({ id: `replacement-${Date.now()}`, name: historyName, image: S.replacementResult, time, operator: '演示管理员', type: '材质替换' });
   v3PersistEffectHistory();
   const points = S.marks.map(mark => {
     const material = S.materialCandidates.find(item => item.id === mark.materialId);
@@ -831,7 +844,7 @@ function finishV3Replacement() {
   }).filter(point => point.material);
   V3_CALL_LOGS.unshift({
     id: `AI${Date.now()}`,
-    institution: '空间改造设计机构', operator: '高志远', type: '材质替换', time, status: '成功', counted: true,
+    institution: '示例设计机构一', operator: '演示管理员', type: '材质替换', time, status: '成功', counted: true,
     mainImage: S.inputImage, mainLabel: S.inputName || '效果图',
     resultImage: S.replacementResult, resultLabel: '最终替换效果图', points,
     inputs: [{ label: '带点原图', image: S.inputImage }, { label: '最终替换效果图', image: S.replacementResult }],
@@ -851,7 +864,9 @@ function compareScreen() {
   const used = S.materialCandidates.filter(material => usedIds.has(material.id));
   const unused = S.materialCandidates.filter(material => !usedIds.has(material.id));
   const value = Math.max(0, Math.min(100, Number(S.compare) || 50));
-  const afterImage = S.replacementResult || S.inputImage;
+  const afterImage = S.replacementResult && !v3SameImageAsset(S.replacementResult, S.inputImage)
+    ? S.replacementResult
+    : v3ResolveReplacementResult(S.inputImage);
   const materialRows = `${used.map(material => v3CompareMaterial(material, true)).join('')}${unused.map(material => v3CompareMaterial(material, false)).join('')}`;
   const body = `<div class="v3-compare"><div class="v3-compare-main" id="v3Compare"><img src="${afterImage}" alt="替换后效果图"><img class="v3-before-img" src="${S.inputImage}" alt="替换前效果图" style="clip-path:inset(0 ${100 - value}% 0 0)"><div class="v3-compare-labels"><span>替换前</span><span>替换后</span></div><input id="v3CompareRange" type="range" min="0" max="100" value="${value}" aria-label="查看替换前后" oninput="setCompare(this.value)"><div class="v3-compare-line" style="left:${value}%"><div class="v3-compare-knob">↔</div></div></div><aside class="v3-compare-side"><div class="v3-compare-list-title"><h3>物料</h3><span>已使用 ${used.length}　未使用 ${unused.length}</span></div><div class="v3-compare-materials unified">${materialRows}</div><div class="v3-compare-actions"><button class="v3-btn" onclick="continueAdjust()">继续调整</button><button class="v3-btn primary" onclick="goHome()">完成并返回首页</button></div></aside></div>`;
   return v3Shell('效果对比', body, 'mark');
@@ -877,7 +892,7 @@ function v3AdminNav() {
 }
 
 function v3AdminFrame(title, content, modal = '') {
-  return `<div class="v3-admin">${v3AdminNav()}<main class="v3-admin-main"><header class="v3-admin-top"><span>首页　/　<b>${title}</b></span><span><span class="avatar">高</span>　高志远</span></header><div class="v3-admin-body">${content}</div></main>${modal}</div>`;
+  return `<div class="v3-admin">${v3AdminNav()}<main class="v3-admin-main"><header class="v3-admin-top"><span>首页　/　<b>${title}</b></span><span><span class="avatar">演</span>　演示管理员</span></header><div class="v3-admin-body">${content}</div></main>${modal}</div>`;
 }
 
 function admin() {
@@ -917,7 +932,7 @@ function openAdminEdit(index) {
 function toggleAdminStatus(index) {
   const item = V3_ADMIN_ITEMS[S.adminSection][index];
   item.status = item.status === '启用' ? '停用' : '启用';
-  item.operator = '高志远';
+  item.operator = '演示管理员';
   item.updatedAt = v3Now();
   render();
 }
@@ -941,7 +956,7 @@ function saveV3AdminItem() {
     toast('请填写名称、图片和排序');
     return;
   }
-  const item = { name: form.name.trim(), image: form.image, sort, status: form.status || '启用', operator: '高志远', updatedAt: v3Now() };
+  const item = { name: form.name.trim(), image: form.image, sort, status: form.status || '启用', operator: '演示管理员', updatedAt: v3Now() };
   if (Number.isInteger(form.editIndex)) V3_ADMIN_ITEMS[S.adminSection][form.editIndex] = item;
   else V3_ADMIN_ITEMS[S.adminSection].push(item);
   S.v3AdminModal = null;
@@ -1114,7 +1129,7 @@ function saveZhaocaiAiRight() {
   org.aiRights.push({
     id: `AIR-${org.id}-${Date.now()}`,
     quota, used: 0, startAt: draft.startAt, endAt: draft.endAt,
-    operator: '高志远', createdAt: v3Now(),
+    operator: '演示管理员', createdAt: v3Now(),
   });
   v3SyncAiRightTotals(org);
   S.zcAiFormOpen = false;
@@ -1164,7 +1179,7 @@ function zhaocaiAdminScreen() {
     return `<tr><td><input type="checkbox" aria-label="选择${v3Esc(org.name)}"></td><td><b>${v3Esc(org.name)}</b></td><td>${org.id}</td><td>${v3Esc(org.admin)}</td><td>${org.account}</td><td>${v3Esc(org.location)}</td><td>${org.scale}</td><td>${org.created}</td><td>${org.lastLogin}</td><td>${org.members}</td><td>${v3Esc(org.tag)}</td><td>${org.payment}</td><td><div class="zc-row-actions"><button>详情</button><button>编辑</button><button>成员</button><button>修改日志</button><button onclick="openZhaocaiRights(${index})">权益配置</button><button>停用</button></div></td></tr>`;
   }).join('');
   return `<div class="zc-admin">
-    <header class="zc-top"><div class="zc-top-logo"><img src="${IMG.logo}" alt="兆材云库"></div><button class="zc-menu">☰</button><span>欢迎进入 展昭管理后台</span><div class="zc-top-spacer"></div><span>⌕　中国站⌄　♢　<span class="zc-user-dot"></span> 欢迎您，高志远　↪ 退出登录</span></header>
+    <header class="zc-top"><div class="zc-top-logo"><img src="${IMG.logo}" alt="兆材云库"></div><button class="zc-menu">☰</button><span>欢迎进入 展昭管理后台</span><div class="zc-top-spacer"></div><span>⌕　中国站⌄　♢　<span class="zc-user-dot"></span> 欢迎您，演示管理员　↪ 退出登录</span></header>
     <aside class="zc-sidebar"><button>⌂　首页</button><button>平台数据看板</button><button>▣　用户账号列表</button><button>♙　案例管理　⌄</button><button class="on">♧　设计机构租户管理　⌃</button><div class="zc-side-sub">兆材云系统版本配置</div><div class="zc-side-sub">兆材云系统权限配置</div><div class="zc-side-sub">兆材云系统菜单管理</div><div class="zc-side-sub">兆材云系统应用中心</div><div class="zc-side-sub">客户标签配置</div><div class="zc-side-sub active">兆材云系统租户列表</div><button>平台活跃报表</button><button>新材速递　⌄</button><button>供应商管理　⌄</button><button>留资管理　⌄</button><button>会员体系管理　⌄</button><button>意见反馈　⌄</button><button>品牌管理　⌄</button><button>物料管理　⌄</button></aside>
     <main class="zc-main"><nav class="zc-main-tabs"><button>首页</button><button class="on">兆材云系统租户列表</button><button>用户账号列表</button><button>设计师认证审核</button><button>验证码管理</button><button>兆材云系统版本配置</button><button>兆材云系统权限配置</button><button>兆材云系统菜单管理</button><button>兆材云系统应用中心</button></nav>
       <section class="zc-panel"><div class="zc-filters"><label><input placeholder="输入ID/名称/管理员账号搜索" value="${v3Esc(S.zcQuery)}" oninput="S.zcQuery=this.value"></label><label><span>创建时间：</span><input placeholder="请选择开始日期　~　请选择结束日期"></label><label><span>最后登录时间：</span><input placeholder="请选择开始日期　~　请选择结束日期"></label><label><span>所在地：</span><input placeholder="请选择省市区"></label><label><span>客户标签：</span><input placeholder="请输入客户标签"></label><label><span>付费状态：</span><input placeholder="请选择付费状态"></label><label><span>权益状态：</span><input placeholder="请选择权益状态"></label><label><span>权益版本：</span><input placeholder="请选择权益版本"></label><label><span>权益生效时间：</span><input placeholder="请选择开始日期　~　请选择结束日期"></label><label><span>灵感币权益：</span><input placeholder="请输入最小区间　-　请输入最大区间"></label><label><span>灵感币余额：</span><input placeholder="请输入最小区间　-　请输入最大区间"></label><label><span>市场跟进人：</span><input placeholder="请输入市场跟进人"></label><label><span>运营跟进人：</span><input placeholder="请输入运营跟进人"></label><label><span>备注：</span><input placeholder="请输入备注"></label><button class="zc-query" onclick="render()">⌕ 查询</button><button onclick="S.zcQuery='';render()">↻ 重置</button></div>
