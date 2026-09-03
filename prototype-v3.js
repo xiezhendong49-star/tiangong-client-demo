@@ -855,8 +855,12 @@ function finishV3Replacement() {
   render();
 }
 
-function v3CompareMaterial(material, isUsed) {
-  return `<div class="v3-compare-material ${isUsed ? 'used' : 'unused'}"><img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}"><span class="v3-compare-material-copy">${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}<small>${material.source ? v3Esc(material.source) : '本地上传'}</small></span><em>${isUsed ? '已使用' : '未使用'}</em></div>`;
+function v3CompareMaterial(material, isUsed, markIndex = -1) {
+  return `<article class="v3-marker-material v3-compare-material-card ${isUsed ? 'bound used' : 'unused'}">
+    <span class="v3-marker-thumb"><img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}"></span>
+    <span class="v3-marker-material-copy">${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}${material.category ? `<span>${v3Esc(material.category)}</span>` : ''}<small>${material.source ? v3Esc(material.source) : '本地上传'}</small></span>
+    <span class="v3-marker-material-actions">${isUsed && markIndex >= 0 ? `<span class="v3-marker-thumb-point" aria-hidden="true">${markIndex + 1}</span>` : ''}<em>${isUsed ? '已使用' : '未使用'}</em></span>
+  </article>`;
 }
 
 function compareScreen() {
@@ -867,8 +871,8 @@ function compareScreen() {
   const afterImage = S.replacementResult && !v3SameImageAsset(S.replacementResult, S.inputImage)
     ? S.replacementResult
     : v3ResolveReplacementResult(S.inputImage);
-  const materialRows = `${used.map(material => v3CompareMaterial(material, true)).join('')}${unused.map(material => v3CompareMaterial(material, false)).join('')}`;
-  const body = `<div class="v3-compare"><div class="v3-compare-main" id="v3Compare"><img src="${afterImage}" alt="替换后效果图"><img class="v3-before-img" src="${S.inputImage}" alt="替换前效果图" style="clip-path:inset(0 ${100 - value}% 0 0)"><div class="v3-compare-labels"><span>替换前</span><span>替换后</span></div><input id="v3CompareRange" type="range" min="0" max="100" value="${value}" aria-label="查看替换前后" oninput="setCompare(this.value)"><div class="v3-compare-line" style="left:${value}%"><div class="v3-compare-knob">↔</div></div></div><aside class="v3-compare-side"><div class="v3-compare-list-title"><h3>物料</h3><span>已使用 ${used.length}　未使用 ${unused.length}</span></div><div class="v3-compare-materials unified">${materialRows}</div><div class="v3-compare-actions"><button class="v3-btn" onclick="continueAdjust()">继续调整</button><button class="v3-btn primary" onclick="goHome()">完成并返回首页</button></div></aside></div>`;
+  const materialRows = `${used.map(material => v3CompareMaterial(material, true, S.marks.findIndex(mark => mark.materialId === material.id))).join('')}${unused.map(material => v3CompareMaterial(material, false)).join('')}`;
+  const body = `<div class="v3-compare"><div class="v3-compare-main" id="v3Compare"><img src="${afterImage}" alt="替换后效果图"><img class="v3-before-img" src="${S.inputImage}" alt="替换前效果图" style="clip-path:inset(0 ${100 - value}% 0 0)"><div class="v3-compare-labels"><span>替换前</span><span>替换后</span></div><input id="v3CompareRange" type="range" min="0" max="100" value="${value}" aria-label="查看替换前后" oninput="setCompare(this.value)"><div class="v3-compare-line" style="left:${value}%"><div class="v3-compare-knob">↔</div></div></div><aside class="v3-compare-side"><div class="v3-marker-side-top"><div><h2>物料</h2><small>${S.materialCandidates.length} 个物料　${S.marks.length}/3 个标点</small></div></div><div class="v3-marker-materials v3-compare-materials unified">${materialRows}</div><div class="v3-compare-actions"><button class="v3-btn" onclick="continueAdjust()">继续调整</button><button class="v3-btn primary" onclick="goHome()">完成并返回首页</button></div></aside></div>`;
   return v3Shell('效果对比', body, 'mark');
 }
 
