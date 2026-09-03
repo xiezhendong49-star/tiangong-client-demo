@@ -303,10 +303,10 @@
 .v3-marker-side-top small{display:block;margin-top:4px;color:var(--v3-muted);font-size:11px;white-space:nowrap}
 .v3-marker-side-top .v3-add-wrap{margin-left:auto}
 .v3-marker-side-top .v3-btn{height:38px;padding:0 12px}
-.v3-marker-layout.merged .v3-marker-side{height:520px;align-self:start}
-.v3-marker-layout.merged .v3-marker-materials{flex:none;gap:7px;overflow:visible}
-.v3-marker-layout.merged .v3-marker-material{min-height:86px;grid-template-columns:72px minmax(0,1fr) auto;padding:7px;cursor:pointer}
-.v3-marker-layout.merged .v3-marker-material img{width:72px;height:72px}
+.v3-marker-layout.merged .v3-marker-side{height:100%;align-self:stretch}
+.v3-marker-layout.merged .v3-marker-materials{flex:1;gap:10px;overflow:auto;padding-right:2px}
+.v3-marker-layout.merged .v3-marker-material{min-height:144px;grid-template-columns:124px minmax(0,1fr) auto;padding:10px;cursor:pointer}
+.v3-marker-layout.merged .v3-marker-material img{width:124px;height:124px}
 .v3-marker-material-copy{min-width:0}
 .v3-marker-material-copy>span{display:block;margin-top:5px;color:#52636e;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .v3-marker-material-actions{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
