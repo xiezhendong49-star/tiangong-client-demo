@@ -1519,10 +1519,10 @@ function markerScreen() {
     const markIndex = S.marks.findIndex(mark => mark.materialId === material.id);
     const bound = markIndex >= 0;
     return `<article class="v3-marker-material ${activeId === material.id ? 'on' : ''} ${bound ? 'bound' : ''}" onclick="selectMarkerMaterial('${material.id}')">
-      <span class="v3-marker-thumb"><img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}">${bound ? `<span class="v3-marker-thumb-point ${S.active === markIndex ? 'on' : ''}" aria-hidden="true">${markIndex + 1}</span>` : ''}</span>
+      <span class="v3-marker-thumb"><img src="${material.image}" alt="${material.name ? v3Esc(material.name) : '本地物料图片'}"></span>
       <span class="v3-marker-material-copy">${material.name ? `<b>${v3Esc(material.name)}</b>` : ''}${material.category ? `<span>${v3Esc(material.category)}</span>` : ''}<small>${v3Esc(material.source)}</small></span>
       <span class="v3-marker-material-actions">${bound
-        ? `<button onclick="deleteMarkForMaterial(event,'${material.id}')">删除标点</button>`
+        ? `<span class="v3-marker-thumb-point ${S.active === markIndex ? 'on' : ''}" aria-hidden="true">${markIndex + 1}</span><button onclick="deleteMarkForMaterial(event,'${material.id}')">删除标点</button>`
         : `<button class="remove" onclick="removeCandidateMaterialFromMarker(event,'${material.id}')">移除</button>`}</span>
     </article>`;
   }).join('') : `<div class="v3-marker-empty">
