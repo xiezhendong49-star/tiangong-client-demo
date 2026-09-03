@@ -289,7 +289,7 @@
 .v3-marker-material img{width:54px;height:54px;border-radius:7px;object-fit:cover}
 .v3-marker-thumb{position:relative;display:block;width:54px;height:54px}
 .v3-marker-thumb>img{display:block;width:100%;height:100%}
-.v3-marker-thumb-point{position:absolute;right:7px;top:7px;width:38px;height:38px;border:3px solid #fff;border-radius:50%;background:var(--v3-blue);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;line-height:1;box-shadow:0 4px 12px rgba(12,31,42,.3);z-index:1}
+.v3-marker-thumb-point{position:static;width:38px;height:38px;border:3px solid #fff;border-radius:50%;background:var(--v3-blue);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800;line-height:1;box-shadow:0 4px 12px rgba(12,31,42,.3);z-index:1}
 .v3-marker-thumb-point.on{box-shadow:0 0 0 6px rgba(7,140,196,.22),0 4px 12px rgba(12,31,42,.3)}
 .v3-marker-material b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .v3-marker-material small{display:block;margin-top:4px;color:var(--v3-muted);font-size:10px}
@@ -315,7 +315,7 @@
 .v3-marker-layout.merged .v3-marker-thumb{width:124px;height:124px}
 .v3-marker-material-copy{min-width:0}
 .v3-marker-material-copy>span{display:block;margin-top:5px;color:#52636e;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.v3-marker-material-actions{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.v3-marker-material-actions{min-width:46px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .v3-marker-material-actions em{font-style:normal;color:var(--v3-green);font-size:10px;white-space:nowrap}
 .v3-marker-material-actions button{height:26px;border:0;background:transparent;color:#b65050;font-size:10px;white-space:nowrap;padding:0 3px}
 .v3-marker-material-actions button.remove{color:#71808a}
