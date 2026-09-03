@@ -293,9 +293,9 @@
 .v3-marker-actions .primary{grid-column:1/-1}
 
 /* Merged material + marker workspace */
-.v3-marker-layout.merged{grid-template-columns:minmax(0,1fr) 370px}
+.v3-marker-layout.merged{height:calc(100% + 24px);margin:-10px -14px -14px;grid-template-columns:minmax(0,1fr) 350px;gap:14px}
 .v3-marker-layout.merged .v3-marker-canvas{background:#e4e9ec}
-.v3-marker-layout.merged .v3-marker-canvas>img{object-fit:contain;padding:22px;border-radius:12px;background:#fff;box-shadow:0 10px 30px rgba(34,56,69,.08)}
+.v3-marker-layout.merged .v3-marker-canvas>img{object-fit:contain;padding:8px;border-radius:12px;background:#fff;box-shadow:0 10px 30px rgba(34,56,69,.08)}
 .v3-marker-guide{position:absolute;left:16px;top:16px;z-index:3;padding:7px 11px;border-radius:7px;background:rgba(38,54,64,.78);color:#fff;font-size:11px;line-height:1;pointer-events:none;backdrop-filter:blur(5px)}
 .v3-marker-side-top{position:relative;display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
 .v3-marker-side-top>div:first-child{min-width:0}
@@ -303,7 +303,8 @@
 .v3-marker-side-top small{display:block;margin-top:4px;color:var(--v3-muted);font-size:11px;white-space:nowrap}
 .v3-marker-side-top .v3-add-wrap{margin-left:auto}
 .v3-marker-side-top .v3-btn{height:38px;padding:0 12px}
-.v3-marker-layout.merged .v3-marker-materials{gap:7px}
+.v3-marker-layout.merged .v3-marker-side{height:520px;align-self:start}
+.v3-marker-layout.merged .v3-marker-materials{flex:none;gap:7px;overflow:visible}
 .v3-marker-layout.merged .v3-marker-material{min-height:86px;grid-template-columns:72px minmax(0,1fr) auto;padding:7px;cursor:pointer}
 .v3-marker-layout.merged .v3-marker-material img{width:72px;height:72px}
 .v3-marker-material-copy{min-width:0}
