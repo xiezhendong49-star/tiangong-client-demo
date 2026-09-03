@@ -753,16 +753,19 @@ function addV3Mark(event) {
     toast('先选择物料');
     return;
   }
-  if (S.marks.some(mark => mark.materialId === S.activeMaterialId)) {
-    toast('该物料已有标点');
+  const point = v3CanvasPoint(event);
+  if (!point) return;
+  const existingIndex = S.marks.findIndex(mark => mark.materialId === S.activeMaterialId);
+  if (existingIndex >= 0) {
+    S.marks[existingIndex] = { ...S.marks[existingIndex], ...point };
+    S.active = existingIndex;
+    render();
     return;
   }
   if (S.marks.length >= 3) {
     toast('最多添加3个标点');
     return;
   }
-  const point = v3CanvasPoint(event);
-  if (!point) return;
   S.marks.push({ ...point, materialId: S.activeMaterialId });
   S.active = S.marks.length - 1;
   render();
@@ -1510,7 +1513,8 @@ function markerScreen() {
   const activeId = S.activeMaterialId;
   const hasMaterials = S.materialCandidates.length > 0;
   const activeMaterial = S.materialCandidates.find(material => material.id === activeId);
-  const guideText = !hasMaterials ? '先添加物料' : activeMaterial ? '点击图中位置' : '选择一个物料';
+  const activeMarkIndex = S.marks.findIndex(mark => mark.materialId === activeId);
+  const guideText = !hasMaterials ? '先添加物料' : activeMaterial ? (activeMarkIndex >= 0 ? '点击图中调整位置' : '点击图中位置') : '选择一个物料';
   const cards = hasMaterials ? S.materialCandidates.map(material => {
     const markIndex = S.marks.findIndex(mark => mark.materialId === material.id);
     const bound = markIndex >= 0;
