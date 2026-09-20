@@ -186,7 +186,7 @@ const V3_EFFECT_HISTORY_SEED = [
   { id: 'history-1', name: '澜庭四居 · 奶油风', image: V3_STYLE_SCENE_IMAGES[4], time: '2026-08-30 11:06', operator: '高志远' },
 ];
 const V3_EFFECT_HISTORY_IMAGE_UPGRADE = Object.fromEntries(V3_EFFECT_HISTORY_SEED.map(item => [item.id, item.image]));
-const V3_HISTORY_STORAGE_KEY = 'tiangong-v3-effect-history';
+const V3_HISTORY_STORAGE_KEY = 'tiangong-v4-case-demo-effect-history';
 const V3_EFFECT_HISTORY = (() => {
   if (typeof localStorage === 'undefined') return [...V3_EFFECT_HISTORY_SEED];
   try {
@@ -248,23 +248,30 @@ function v3SeedAiRights(org, index) {
 
 function v3AiRightStatus(right, now = Date.now()) {
   if (right.used >= right.quota) return '已用完';
-  if (new Date(right.endAt).getTime() < now) return '已到期';
+  if (new Date(right.endAt).getTime() <= now) return '已到期';
   if (new Date(right.startAt).getTime() > now) return '待生效';
   return '生效中';
 }
 
-function v3AiRightTotals(org) {
-  const rights = org.aiRights || [];
-  return rights.reduce((total, right) => {
+function v3AiRightBalance(right, now = Date.now()) {
+  const unused = Math.max(0, Number(right.quota) - Number(right.used));
+  const expired = new Date(right.endAt).getTime() <= now ? unused : 0;
+  return { remaining: unused - expired, expired };
+}
+
+function v3AiRightTotals(org, now = Date.now()) {
+  return (org.aiRights || []).reduce((total, right) => {
+    const balance = v3AiRightBalance(right, now);
     total.quota += Number(right.quota) || 0;
     total.used += Number(right.used) || 0;
+    total.remaining += balance.remaining;
+    total.expired += balance.expired;
     return total;
-  }, { quota: 0, used: 0, remaining: 0 });
+  }, { quota: 0, used: 0, remaining: 0, expired: 0 });
 }
 
 function v3SyncAiRightTotals(org) {
   const totals = v3AiRightTotals(org);
-  totals.remaining = Math.max(0, totals.quota - totals.used);
   org.quota = totals.quota;
   org.used = totals.used;
   return totals;
